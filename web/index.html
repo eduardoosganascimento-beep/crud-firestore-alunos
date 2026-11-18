@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD de Alunos - Firebase Firestore</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="container">
+      <h1>Alunos - Firebase Firestore</h1>
+      <p class="subtitulo">Página web conectada ao banco de dados Cloud Firestore (coleção <code>alunos</code>).</p>
+      <p class="projeto">Projeto: <strong>crud-alunos-firestore</strong> · <a href="https://console.firebase.google.com/project/crud-alunos-firestore/firestore/databases/-default-/data" target="_blank" rel="noopener noreferrer">Abrir no console do Firebase</a></p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="painel status-painel" aria-live="polite">
+      <div id="status" class="status carregando">Conectando ao Firestore...</div>
+      <div id="resumo" class="resumo"></div>
+    </section>
+
+    <section class="painel filtros">
+      <h2>Consultas e filtros</h2>
+      <div class="grade-filtros">
+        <div class="campo">
+          <label for="filtro-turma">Turma</label>
+          <select id="filtro-turma">
+            <option value="">Todas as turmas</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="filtro-data">Data de nascimento (exata)</label>
+          <input type="date" id="filtro-data">
+        </div>
+
+        <div class="campo">
+          <label for="filtro-inicio">Nascimento de (início)</label>
+          <input type="date" id="filtro-inicio">
+        </div>
+
+        <div class="campo">
+          <label for="filtro-fim">Nascimento até (fim)</label>
+          <input type="date" id="filtro-fim">
+        </div>
+
+        <div class="campo">
+          <label for="filtro-ativo">Situação</label>
+          <select id="filtro-ativo">
+            <option value="">Todos</option>
+            <option value="true">Ativos</option>
+            <option value="false">Inativos</option>
+          </select>
+        </div>
+
+        <div class="campo campo-busca">
+          <label for="filtro-busca">Buscar por nome ou ID</label>
+          <input type="search" id="filtro-busca" placeholder="Digite parte do nome ou o ID">
+        </div>
+      </div>
+
+      <div class="acoes">
+        <button id="btn-limpar" type="button" class="botao secundario">Limpar filtros</button>
+        <button id="btn-atualizar" type="button" class="botao primario">Atualizar dados</button>
+      </div>
+    </section>
+
+    <section class="painel">
+      <div class="cabecalho-tabela">
+        <h2>Dados da coleção <code>alunos</code></h2>
+        <span id="contador" class="contador">0 aluno(s)</span>
+      </div>
+
+      <div class="tabela-wrapper">
+        <table id="tabela-alunos">
+          <thead>
+            <tr>
+              <th>ID (documento)</th>
+              <th>Nome</th>
+              <th>Turma</th>
+              <th>Data de nascimento</th>
+              <th>Ativo</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-tabela">
+            <tr>
+              <td colspan="5" class="vazio">Carregando dados...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="painel info">
+      <h2>Estrutura dos documentos</h2>
+      <ul>
+        <li><strong>nome</strong> (string) — nome completo do aluno</li>
+        <li><strong>turma</strong> (string) — turma do aluno</li>
+        <li><strong>dataNascimento</strong> (string, <code>AAAA-MM-DD</code>) — data de nascimento</li>
+        <li><strong>ativo</strong> (boolean) — indica se o aluno está ativo</li>
+      </ul>
+      <p class="aviso">Os dados exibidos são fictícios e foram cadastrados para fins de atividade prática.</p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Atividade prática — CRUD com Firebase Cloud Firestore · Node.js &amp; Web</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK (compat) - funciona sem bundler, abrindo via servidor local -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

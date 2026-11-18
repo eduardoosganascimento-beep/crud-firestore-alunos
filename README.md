@@ -58,6 +58,10 @@ firestore-crud-alunos/
 │   └── validacao.js       # validação dos campos (sem dependência do Firebase)
 ├── test/
 │   └── validacao.test.js  # testes automatizados das validações
+├── web/
+│   ├── app.js             # conexão com o Firestore via Firebase Web SDK e filtros
+│   ├── index.html         # página web com tabela organizada dos alunos
+│   └── style.css          # estilos da página
 ├── .env.example           # modelo de configuração por variáveis de ambiente
 ├── .gitignore             # ignora serviceAccountKey.json e .env
 ├── package.json
@@ -185,6 +189,27 @@ O menu fica assim:
 - **Por data exata:** usa `where('dataNascimento', '==', data)`.
 - **Por período:** usa `where('dataNascimento', '>=', inicio)` e `<=`, o que funciona porque a data é uma string ISO (`AAAA-MM-DD`) e é ordenada corretamente como texto.
 - A ordenação dos resultados é feita em memória (`localeCompare`) para **não exigir índices compostos** no Firestore. Assim a atividade roda sem configuração extra no console.
+
+## Página web (visualização dos dados)
+
+A pasta [`web/`](web/) contém uma página HTML conectada ao **Cloud Firestore** pelo **Firebase Web SDK** (client). Ela exibe os documentos da coleção `alunos` em uma tabela organizada e permite filtrar por turma, data de nascimento (exata e período), situação (ativo/inativo) e busca por nome/ID, com atualização em tempo real.
+
+### Como executar a página web
+
+1. Abra um terminal na pasta do projeto.
+2. Inicie um servidor local apontando para a pasta `web` (necessário para carregar os scripts corretamente):
+
+```bash
+# opção 1 (Node.js)
+npx serve web
+
+# opção 2 (Python)
+python -m http.server 8080 --directory web
+```
+
+3. Abra no navegador o endereço indicado (por exemplo, `http://localhost:3000` ou `http://localhost:8080`).
+
+> A configuração do app web do Firebase está em `web/app.js`. A leitura dos dados depende das regras de segurança do Firestore permitirem acesso (o projeto foi criado em modo de teste para desenvolvimento).
 
 ## Roteiro para as capturas de tela
 
