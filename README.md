@@ -1,5 +1,7 @@
 # CRUD de Alunos com Firebase Firestore
 
+**Banco de dados (Firestore):** https://console.firebase.google.com/project/crud-alunos-firestore/firestore/databases/-default-/data
+
 Atividade prática de persistência de dados com **Node.js** e **Firebase Cloud Firestore** (Admin SDK). A aplicação roda no terminal, implementa as quatro operações CRUD e consultas por turma e por data de nascimento.
 
 Todos os dados usados nas demonstrações são **fictícios**.
