@@ -3,19 +3,33 @@
 const readline = require('node:readline/promises');
 const alunos = require('./alunos');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+let rl = null;
 
-rl.on('SIGINT', () => {
-  console.log('\nAté logo!');
-  rl.close();
-  process.exit(0);
-});
+function criarInterface() {
+  rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  rl.on('SIGINT', () => {
+    console.log('\nAté logo!');
+    rl.close();
+    process.exit(0);
+  });
+
+  return rl;
+}
+
+function obterInterface() {
+  if (!rl || rl.closed) {
+    criarInterface();
+  }
+
+  return rl;
+}
 
 function perguntar(texto) {
-  return rl.question(texto);
+  return obterInterface().question(texto);
 }
 
 async function perguntarComPadrao(texto, padrao) {
@@ -219,6 +233,8 @@ async function main() {
   process.stdout.write('Conectando ao Firestore... ');
   await alunos.testarConexao();
   console.log('OK!\n');
+
+  criarInterface();
 
   let executando = true;
 
