@@ -4,6 +4,15 @@ Atividade prática de persistência de dados com **Node.js** e **Firebase Cloud 
 
 Todos os dados usados nas demonstrações são **fictícios**.
 
+## Projeto Firebase (banco de dados)
+
+- **Projeto:** `crud-alunos-firestore`
+- **Console do projeto:** https://console.firebase.google.com/project/crud-alunos-firestore/overview
+- **Banco de dados (Firestore):** https://console.firebase.google.com/project/crud-alunos-firestore/firestore/databases/-default-/data
+- **Coleção:** `alunos`
+
+> O acesso ao console exige login em uma conta Google com permissão no projeto.
+
 ## Requisitos da atividade e onde estão no projeto
 
 | Requisito | Como é atendido |
