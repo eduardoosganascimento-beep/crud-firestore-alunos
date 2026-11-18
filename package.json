@@ -1,0 +1,26 @@
+{
+  "name": "crud-firestore-alunos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Atividade prática: CRUD de alunos com Firebase Cloud Firestore e Node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "seed": "node scripts/seed.js",
+    "seed:limpar": "node scripts/seed.js --limpar",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "firebase",
+    "firestore",
+    "crud",
+    "nodejs"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "firebase-admin": "^13.4.0"
+  }
+}
